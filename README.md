@@ -14,10 +14,7 @@ classDiagram
     class Personne {
         +nom
         +age
-        +chercherLogement()
-        +postuler()
-        +budgetMaxLoyer
-        +niveauLangue
+        +trouverLogement()  // contrainte principale
     }
 
     class Etudiant {
@@ -41,7 +38,7 @@ classDiagram
 
     class PlateformeNumerique {
         +trouverLogement()
-        +aideNumerique()
+        +soutienLangue()  // pour nouveaux arrivants ou difficultés linguistiques
     }
 
     class Association {
@@ -60,5 +57,4 @@ classDiagram
     PlateformeNumerique --> Logement : référence
     Association --> Logement : accompagne
     OrganismeLocal --> Logement : référence
-
 
