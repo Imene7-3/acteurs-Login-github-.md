@@ -31,5 +31,6 @@ mindmap
       ComprendreObstacles
       IdentifierInégalités
       ObserverStratégies
+```
 
 
