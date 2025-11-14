@@ -1,15 +1,11 @@
-# acteurs-Login-github-.md
-
-
-```mermaid
 classDiagram
     Personne <|-- Etudiant
     Personne <|-- JeuneActif
     Logement <|-- ResidenceEtudiante
     Logement <|-- Appartement
     Service <|-- PlateformeNumerique
-    Service <|-- Association
-    Service <|-- OrganismeLocal
+    Service <|-- GroupeEntraide
+    Service <|-- OrganismePublic
 
     class Personne {
         +nom
@@ -18,43 +14,56 @@ classDiagram
     }
 
     class Etudiant {
+        +nationalite
+        +maitriseLangue
     }
 
     class JeuneActif {
+        +salaire
+        +mobilite
     }
 
     class Logement {
-        +localisation: "Seine-Saint-Denis"
+        +localisation
+        +type
+        +loyer
     }
 
     class ResidenceEtudiante {
+        +crousSubvention
     }
 
     class Appartement {
+        +proprietaire
     }
 
     class Service {
+        +nom
     }
 
     class PlateformeNumerique {
         +trouverLogement()
-        +soutienLangue()  // pour nouveaux arrivants ou difficultés linguistiques
+        +rechercheRapide()
+        +soutienLangue()  // pour étudiants internationaux
     }
 
-    class Association {
-        +accompagnement()
-        +soutienLangue()
+    class GroupeEntraide {
+        +partageConseils()
+        +recommandations()
     }
 
-    class OrganismeLocal {
+    class OrganismePublic {
         +dispositifsAide()
+        +informationAdministrative()
     }
 
+    %% Relations
     Personne --> Logement : postule
     Personne --> PlateformeNumerique : consulte
-    Personne --> Association : contacte
-    Personne --> OrganismeLocal : consulte
+    Personne --> GroupeEntraide : contacte
+    Personne --> OrganismePublic : consulte
     PlateformeNumerique --> Logement : référence
-    Association --> Logement : accompagne
-    OrganismeLocal --> Logement : référence
+    GroupeEntraide --> Logement : accompagne
+    OrganismePublic --> Logement : référence
+
 
