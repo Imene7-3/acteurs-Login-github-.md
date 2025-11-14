@@ -1,3 +1,4 @@
+```mermaid
 mindmap
   root((Recherche de logement numérique))
     Acteurs
