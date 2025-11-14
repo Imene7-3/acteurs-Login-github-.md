@@ -1,81 +1,80 @@
 ```mermaid
 classDiagram
 
-    %% ============================
-    %%        CLASSES
-    %% ============================
+%% =============================
+%%        CLASSES PRINCIPALES
+%% =============================
 
-    class ServiceLogement {
-        +rechercherParType(typeLogement)
-        +filtrerParLoyer(min, max)
-        +reserverLogement(idLogement, idPersonne)
-        +gererContrat(contrat)
-    }
+class RechercheLogementNumerique {
+    +analyserActeurs()
+    +identifierObstacles()
+    +observerServices()
+    +formulerObjectifs()
+}
 
-    class Personne {
-        +int id
-        +String nom
-        +String prenom
-        +int age
-        +String statut
-        +rechercherLogement()
-    }
+%% -------- ACTEURS --------
+class Etudiants {
+    +type: "Français / Internationaux"
+}
 
-    class Proprietaire {
-        +int id
-        +String nom
-        +String prenom
-        +String contact
-        +ajouterLogement()
-        +supprimerLogement()
-    }
+class JeunesActifs {
+}
 
-    class Contrat {
-        +int id
-        +Date dateDebut
-        +Date dateFin
-        +float montantLoyer
-        +signerContrat()
-        +annulerContrat()
-    }
+class Proprietaires {
+}
 
-    class Colocation {
-        +int nombreColocataires
-        +String reglesColocation
-    }
+class AgencesImmobilieres {
+}
 
-    class Studio {
-        +bool kitchenette
-    }
+%% -------- SERVICES --------
+class PlateformesNumeriques {
+    +Leboncoin()
+    +SeLoger()
+    +Studapart()
+    +Lokaviz()
+}
 
-    class Appartement {
-        +int etage
-        +bool ascenseur
-    }
+class GroupesEntraide {
+    +WhatsApp()
+    +Facebook()
+    +Discord()
+}
 
-    %% ============================
-    %%        RELATIONS
-    %% ============================
+class OrganismesPublics {
+    +Crous()
+    +DispositifsAide()
+}
 
-    %% ServiceLogement gère les logements
-    ServiceLogement --> Colocation : gère
-    ServiceLogement --> Studio : gère
-    ServiceLogement --> Appartement : gère
+%% -------- OBSTACLES --------
+class Obstacles {
+    +annoncesFrauduleuses
+    +surchargeInformations
+    +barrieresLinguistiques
+    +discriminations
+}
 
-    %% Propriétaire possède les logements
-    Proprietaire --> Colocation : possède
-    Proprietaire --> Studio : possède
-    Proprietaire --> Appartement : possède
+%% -------- OBJECTIFS --------
+class Objectifs {
+    +trouverLogement()
+    +comprendreObstacles()
+    +identifierInegalites()
+    +observerStrategies()
+}
 
-    %% Personne recherche un logement via ServiceLogement
-    Personne --> ServiceLogement : consulte
+%% =============================
+%%        RELATIONS
+%% =============================
 
-    %% Personne signe un contrat
-    Personne --> Contrat : signe
+RechercheLogementNumerique --> Etudiants : concerne
+RechercheLogementNumerique --> JeunesActifs : concerne
+RechercheLogementNumerique --> Proprietaires : inclut
+RechercheLogementNumerique --> AgencesImmobilieres : inclut
 
-    %% Contrat lié au logement (relation floue vue sur la photo)
-    Contrat --> Appartement : concerne
+RechercheLogementNumerique --> PlateformesNumeriques : utilise
+RechercheLogementNumerique --> GroupesEntraide : utilise
+RechercheLogementNumerique --> OrganismesPublics : consulte
 
-    %% Contrat généré par ServiceLogement
-    ServiceLogement --> Contrat : génère
+RechercheLogementNumerique --> Obstacles : identifie
+RechercheLogementNumerique --> Objectifs : fixe
+
 ```
